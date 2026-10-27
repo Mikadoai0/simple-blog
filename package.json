@@ -1,0 +1,21 @@
+{
+  "name": "simple-blog-demo",
+  "version": "1.0.0",
+  "description": "Tiny blog demo showing GET, POST, PATCH, PUT, DELETE and token authentication",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "google-auth-library": "^11.3.1",
+    "pg": "^8.23.1"
+  }
+}

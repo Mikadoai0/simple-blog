@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Blog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Simple Blog</h1>
+    <div id="auth-area"></div>
+  </header>
+
+  <main class="container">
+    <p id="message" class="message hidden"></p>
+
+    <!-- Login / register (shown when logged out) -->
+    <section id="auth-section" class="card hidden">
+      <h2 id="auth-title">Log in</h2>
+      <form id="auth-form">
+        <input id="auth-username" placeholder="Username" autocomplete="username" required />
+        <input id="auth-password" type="password" placeholder="Password (min 6 characters)" autocomplete="current-password" required />
+        <div class="row">
+          <button type="submit" id="auth-submit">Log in</button>
+          <button type="button" id="auth-toggle" class="link">Need an account? Register</button>
+          <button type="button" id="auth-cancel" class="link">Cancel</button>
+        </div>
+        <a class="google-signin" href="/api/auth/google">Continue with Google</a>
+      </form>
+    </section>
+
+    <!-- Create / edit post (shown when logged in) -->
+    <section id="editor-section" class="card hidden">
+      <h2 id="editor-title">New post</h2>
+      <form id="post-form">
+        <input id="post-title" placeholder="Title" maxlength="150" required />
+        <textarea id="post-content" rows="6" placeholder="Write something..." required></textarea>
+        <div class="row">
+          <button type="submit" id="post-submit">Publish</button>
+          <button type="button" id="post-cancel" class="link hidden">Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="search-row">
+      <input id="search" placeholder="Search posts..." />
+    </section>
+
+    <section id="posts"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

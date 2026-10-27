@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "b6bce85f-eea7-4d95-8de0-455d34471796",
+      "username": "mikado",
+      "salt": "7473cc654d5b1932ca64b1b767008dc7",
+      "hash": "6899c6d27122a238da4b6c915b45c566a602e2281d0133c1ace3ccd08bc1a0e622317e30f15838004cc38dc613003ed23861c8f77a095978169988d23bfe8be3"
+    }
+  ],
+  "posts": [
+    {
+      "id": "07e2b8e1-6c49-4d82-9cff-cc91819ae18b",
+      "title": "jlnkddk",
+      "content": "CREATE TABLE users (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),  -- a unique ID, made automatically\n  username TEXT NOT NULL,                         -- NOT NULL = this can't be empty\n  password_salt TEXT NOT NULL,\n  password_hash TEXT NOT NULL                     -- the scrambled password, never the real one\n);\nCREATE UNIQUE INDEX ON users (lower(username));   -- no two people can share a username\n\n\nCREATE TABLE posts (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  title TEXT NOT NULL,\n  content TEXT NOT NULL,\n  author_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),\n  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()\n);\n\nCREATE TABLE sessions (\n  token_hash TEXT PRIMARY KEY,\n  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE\n);",
+      "author": "mikado",
+      "authorId": "b6bce85f-eea7-4d95-8de0-455d34471796",
+      "createdAt": "2026-10-26T21:09:30.140Z",
+      "updatedAt": "2026-10-26T21:09:30.140Z"
+    }
+  ],
+  "sessions": {
+    "7e5dfa19bf3ebc981a2c3e7dcc61c9bc3aa1f15f5a3e8654998b76c3e2cea377": "b6bce85f-eea7-4d95-8de0-455d34471796"
+  }
+}
